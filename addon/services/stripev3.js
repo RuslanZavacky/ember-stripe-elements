@@ -1,7 +1,7 @@
 /* global Stripe */
 import Service from '@ember/service';
 import { setProperties } from '@ember/object';
-import { readOnly } from '@ember/object/computed';
+import { readOnly, alias } from '@ember/object/computed';
 import { resolve } from 'rsvp';
 import loadScript from 'ember-stripe-elements/utils/load-script';
 
@@ -12,7 +12,7 @@ export default Service.extend({
 
   lazyLoad: readOnly('config.lazyLoad'),
   mock: readOnly('config.mock'),
-  publishableKey: readOnly('config.publishableKey'),
+  publishableKey: alias('config.publishableKey'),
 
   init() {
     this._super(...arguments);
